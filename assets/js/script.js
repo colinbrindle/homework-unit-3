@@ -20,6 +20,7 @@ var addLower = true;
 var addUpper = true;
 var addNums = true;
 var addSpec = true;
+var tempArray = [];
 
 // Write password to the #password input
 function writePassword() {
@@ -144,13 +145,28 @@ function generatePassword() {
         }
     }
 
-    var tempArray = passLower.concat(passUpper, passNumber, passSpecial);
-    console.log(genPass);
+    tempArray = passLower.concat(passUpper, passNumber, passSpecial);
+    console.log(tempArray);
+    
+    var scramArray = scramblePass(tempArray);
 
-    genPass = tempArray.join("");
+    genPass = scramArray.join("");
 
     return genPass;
 }
+
+// Fisher-Davis randomization function to scramble the array of passwords and return it as a string. Credit to TutorialsPoint https://www.tutorialspoint.com/what-is-fisher-yates-shuffle-in-javascript
+function scramblePass(tempArray) {
+    var i = tempArray.length, k, t;
+    while (--i > 0) {
+        k = Math.floor(Math.random() * (i+1));
+        t = tempArray[k];
+        tempArray[k] = tempArray[i];
+        tempArray[i] = t;
+    }
+    return tempArray;
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
