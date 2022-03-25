@@ -1,10 +1,3 @@
-// Jung's notes on homework:
-// Create a generatePassword() function
-// Write the logic under that function
-// The value that is returned from this will be stored in the password variable
-// Hint: separate arrays for lower case, upper case, numbers, special characters
-// Hint: Password variable should add all values together "+=" should do this (look it up)
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
